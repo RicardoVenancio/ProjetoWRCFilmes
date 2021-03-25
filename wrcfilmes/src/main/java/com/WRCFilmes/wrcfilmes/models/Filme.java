@@ -1,9 +1,11 @@
 package com.WRCFilmes.wrcfilmes.models;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Filme {
 	
 	@GeneratedValue
@@ -11,11 +13,10 @@ public class Filme {
 	private int id;
 	
 	@Column(name = "autor")
-	
 	private String autor;
 	
 	@Column(name = "datalancamento")
-	private int datalancamento; //TROCAR PARA DATE
+	private String datalancamento; //TROCAR PARA DATE
 	
 	@Column(name = "genero")
 	private String genero;
@@ -47,11 +48,11 @@ public class Filme {
 		this.autor = autor;
 	}
 
-	public int getDatalancamento() {
+	public String getDatalancamento() {
 		return datalancamento;
 	}
 
-	public void setDatalancamento(int datalancamento) {
+	public void setDatalancamento(String datalancamento) {
 		this.datalancamento = datalancamento;
 	}
 
@@ -102,7 +103,7 @@ public class Filme {
 		int result = 1;
 		result = prime * result + ((atorprincipal == null) ? 0 : atorprincipal.hashCode());
 		result = prime * result + ((autor == null) ? 0 : autor.hashCode());
-		result = prime * result + datalancamento;
+		result = prime * result + ((datalancamento == null) ? 0 : datalancamento.hashCode());
 		result = prime * result + ((diretor == null) ? 0 : diretor.hashCode());
 		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
 		result = prime * result + id;
@@ -157,7 +158,7 @@ public class Filme {
 	}
 
 ////////////////////////////////////// CONSTRUCTOR POVOADO
-	public Filme(int id, String autor, int datalancamento, String genero, String nome, String diretor,
+	public Filme(int id, String autor, String datalancamento, String genero, String nome, String diretor,
 			String atorprincipal) {
 		super();
 		this.id = id;

@@ -29,13 +29,13 @@ public class PessoaResource {
 		this.pessoasRepositorio = pessoaRepositorio;
 		}
 	
-	@PostMapping
+	@PostMapping(path = "/adicionar")
 	public ResponseEntity<Pessoa> save(@RequestBody Pessoa pessoa){
 		pessoasRepositorio.save(pessoa);
 		return new ResponseEntity<>(pessoa, HttpStatus.OK);
 		}
 	
-	@GetMapping
+	@GetMapping(path="/listar")
 	public ResponseEntity<List<Pessoa>> getAll(){
 		List<Pessoa> pessoas = new ArrayList<>();
 		pessoas = pessoasRepositorio.findAll();
@@ -43,7 +43,7 @@ public class PessoaResource {
 		}
 	
 	//BUSCA POR ID
-	@GetMapping(path="/{id}")
+	@GetMapping(path="/listarporid/{id}")
 	public ResponseEntity<Optional<Pessoa>> getById(@PathVariable Integer id) {
 		Optional<Pessoa> pessoa;
 		try {
@@ -54,7 +54,7 @@ public class PessoaResource {
 		}
 	}
 	
-	@DeleteMapping(path="/{id}")
+	@DeleteMapping(path="/deletarporid/{id}")
 	public ResponseEntity<Optional<Pessoa>> deleteById(@PathVariable Integer id) {
 		try {
 			pessoasRepositorio.deleteById(id);
@@ -64,7 +64,7 @@ public class PessoaResource {
 		}
 	}
 	
-	@PutMapping(value="/{id}")
+	@PutMapping(value="/editarpessoa/{id}")
 	public ResponseEntity<Pessoa> update(@PathVariable Integer id, @RequestBody Pessoa newPessoa){
 		return pessoasRepositorio.findById(id)
 				.map(pessoa -> {
