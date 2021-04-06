@@ -1,0 +1,5 @@
+package com.WRCFilmes.wrcfilmes.models;
+
+public class Genero {
+
+}
